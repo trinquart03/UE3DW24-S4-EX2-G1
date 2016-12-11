@@ -1,0 +1,38 @@
+@import 'common.scss';
+
+.main{
+	background-color: $colorWhite;
+	font-family: $fontDefault;
+	color: $colorDark;
+	padding: 0px;
+	margin: 0px;
+	width: 100%;
+	min-height: 100%;
+	
+	a{
+		text-decoration: none;
+		color: $colorDark;
+		
+		&:hover,&:visited{
+			text-decoration: none;
+			color: $colorDark;
+		}
+		
+		.label{
+			font-family: $fontDefault;
+		}
+	}
+	
+	.content {
+		@include margin($headerBoxHeight null null null);
+		@include transition(opacity $ease-out-sine 0.35s);
+		&.side-menu-visible {
+			opacity: 0.2;
+		}
+	}
+}
+
+@import 'header.scss';
+@import 'sidescreen.scss';
+@import 'home.scss';
+@import 'responsive.scss';

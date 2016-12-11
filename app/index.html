@@ -1,0 +1,147 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width; initial-scale=1, maximum-scale=1, user-scalable=no">
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    <!-- build:css(.) styles/vendor.css -->
+    <!-- bower:css -->
+    <link rel="stylesheet" href="bower_components/components-font-awesome/css/font-awesome.css" />
+    <!-- endbower -->
+    <!-- endbuild -->
+    <!-- build:css(.tmp) styles/main.css -->
+    <link rel="stylesheet" href="styles/main.css">
+    <!-- endbuild -->
+    <base href="/">
+  </head>
+  <body ng-app="movieExplorerApp" class="main" ng-controller="ExecutionContextCtrl as executionContext" >
+    <!--[if lte IE 8]>
+      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+
+    <!-- Tout le code html qui est integré ici est commun à l'ensemble des pages-->
+    <div class="header">
+		<div class="navbar navbar-default" role="navigation">
+			<div class="navbar_brand">
+				<a href="#/">Movie Explorer</a>
+			</div>
+			
+			<div class="navbar_toggle-menu hidden-lg hidden-xl" ng-click="executionContext.openSideMenu()">
+				<i class="fa fa-bars" aria-hidden="true">
+				</i>
+			</div>
+			
+			<div class="navbar_search hidden-xs">
+				<i class="fa fa-search" aria-hidden="true">
+					<input type="text" class="form-control" ng-model="query" id="query" placeholder="Search movies, TV Shows, actor..." />
+					<input type="submit" ng-click="searchAction()" name="envoi" value="Envoyer"/>
+					<input type="text" class="form-control navbar-search-input-text" id="navbar-search-input" ng-model="moviesQuery" /><a ng-href="{{search.getMoviesQuery()}}"><button class="navbar-search-input-valid btn">ok</button></a>
+				</i>
+			</div>
+			
+			<div class="navbar_menu collapse hidden-xs hidden-sm hidden-md">
+				<ul class="menu">
+					<li class="menu_item">
+						<a href="#/" class="fa fa-home">
+							<span class="label">Home</span>
+						</a>
+					</li>
+					<li class="menu_item">
+						<a href="#/" class="fa fa-binoculars">
+							<span class="label">Explore</span>
+						</a>
+					</li>
+					<li class="menu_item">
+						<a href="#/" class="fa fa-bar-chart">
+							<span class="label">Top 100</span>
+						</a>
+					</li>
+					<li class="menu_item">
+						<a href="#/" class="fa fa-user">
+							<span class="label">My Account</span>
+						</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+    </div>
+	
+	<div class="sidescreen right hidden-lg hidden-xl" ng-show="executionContext.sideMenuIsVisible" >
+		<div class="sidescreen_topbar" ng-click="executionContext.closeSideMenu()" >
+			<i class="fa fa-times"><span class="label">Menu</span></i>
+		</div>
+		
+		<div class="sidescreen_menu">
+			<ul class="menu">
+				<li class="menu_item">
+					<a href="#/" class="fa fa-home">
+						<span class="label">Home</span>
+					</a>
+				</li>
+				<li class="menu_item">
+					<a href="#/" class="fa fa-binoculars">
+						<span class="label">Explore</span>
+					</a>
+				</li>
+				<li class="menu_item">
+					<a href="#/" class="fa fa-bar-chart">
+						<span class="label">Top 100</span>
+					</a>
+				</li>
+				<li class="menu_item">
+					<a href="#/" class="fa fa-user">
+						<span class="label">My Account</span>
+					</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+		
+    <div class="content container" ng-class="{'side-menu-visible': executionContext.sideMenuIsVisible}" >
+      <!-- C'est ici que le contenu de la vue est injectée -->
+    <div ng-view=""></div>
+    </div>
+
+    <div class="footer">
+      <div class="container">
+        <p><span class="glyphicon glyphicon-heart"></span> from the Yeoman team</p>
+      </div>
+    </div>
+
+
+    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
+     <script>
+       !function(A,n,g,u,l,a,r){A.GoogleAnalyticsObject=l,A[l]=A[l]||function(){
+       (A[l].q=A[l].q||[]).push(arguments)},A[l].l=+new Date,a=n.createElement(g),
+       r=n.getElementsByTagName(g)[0],a.src=u,r.parentNode.insertBefore(a,r)
+       }(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+       ga('create', 'UA-XXXXX-X');
+       ga('send', 'pageview');
+    </script>
+
+    <!-- build:js(.) scripts/vendor.js -->
+    <!-- bower:js -->
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/angular-animate/angular-animate.js"></script>
+    <script src="bower_components/angular-cookies/angular-cookies.js"></script>
+    <script src="bower_components/angular-resource/angular-resource.js"></script>
+    <script src="bower_components/angular-route/angular-route.js"></script>
+    <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+    <script src="bower_components/angular-touch/angular-touch.js"></script>
+    <!-- endbower -->
+    <!-- endbuild -->
+
+        <!-- build:js({.tmp,app}) scripts/scripts.js -->
+        <script src="scripts/app.js"></script>
+        <script src="scripts/controllers/main.js"></script>
+        <script src="scripts/services/movies.js"></script>
+        <script src="scripts/controllers/movie.js"></script>
+        <script src="scripts/controllers/executioncontext.js"></script>
+        <script src="scripts/controllers/header.js"></script>
+        <script src="scripts/controllers/search.js"></script>
+        <!-- endbuild -->
+</body>
+</html>
